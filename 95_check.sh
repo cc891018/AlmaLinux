@@ -1,13 +1,16 @@
 #!/bin/bash
-  
-avahi-daemon_status(){
-        systemctl is-enabled avahi-daemon
-        flag=$(systemctl is-enabled avahi-daemon)
-        if [ "$flag" == "enabled" ]
+
+avahi_check(){
+        if [ ! "$(dnf list installed | grep avahi)" == "" ]
         then
-                echo "Please turn off avahi-daemon"
+                if [ "$(systemctl is-enabled avahi-daemon)" == "disabled" ]
+                then
+                        echo "avahi-daemon is disabled"
+                else
+                        echo "avahi-daemon is enabled. Please disable it"
+                fi
+        else
+                echo "avahi-daemon is not installed"
         fi
 }
-
-avahi-daemon_status
-
+avahi_check

@@ -1,12 +1,16 @@
 #!/bin/bash
   
-smb_status(){
-        systemctl is-enabled smb
-        flag=$(systemctl is-enabled smb)
-        if [ "$flag" == "enabled" ]
+smb_check(){
+        if [ ! "$(dnf list installed | grep smb)" == "" ]
         then
-                echo "Please turn off smb"
+                if [ "$(systemctl is-enabled smb)" == "disabled" ]
+                then
+                        echo "smb is disabled"
+                else
+                        echo "smb is enabled. Please disable it"
+                fi
+        else
+                echo "smb is not installed"
         fi
 }
-
-smb_status
+smb_check

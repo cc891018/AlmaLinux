@@ -1,13 +1,16 @@
 #!/bin/bash
   
-kdump_status(){
-        systemctl is-enabled kdump
-        flag=$(systemctl is-enabled kdump)
-        if [ "$flag" == "disabled" ]
+kdump_check(){
+        if [ ! "$(dnf list installed | grep kexec-tools)" == "" ]
         then
-                echo "Please turn on kdump"
+                if [ "$(systemctl is-enabled kdump)" == "enabled" ]
+                then
+                        echo "kdump is enabled"
+                else
+                        echo "kdump is disabled. Please enable it"
+                fi
+        else
+                echo "kdump is not installed. Please install kexec-tools"
         fi
 }
-
-kdump_status
-
+kdump_check

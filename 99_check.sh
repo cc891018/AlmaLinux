@@ -1,13 +1,16 @@
 #!/bin/bash
   
-vsftpd_status(){
-        systemctl is-enabled vsftpd
-        flag=$(systemctl is-enabled vsftpd)
-        if [ "$flag" == "enabled" ]
+vsftpd_check(){
+        if [ ! "$(dnf list installed | grep vsftpd)" == "" ]
         then
-                echo "Please turn off vsftpd"
+                if [ "$(systemctl is-enabled vsftpd)" == "disabled" ]
+                then
+                        echo "vsftpd is disabled"
+                else
+                        echo "vsftpd is enabled. Please disable it"
+                fi
+        else
+                echo "vsftpd is not installed"
         fi
 }
-
-vsftpd_status
-
+vsftpd_check

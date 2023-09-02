@@ -1,0 +1,13 @@
+#!/bin/bash
+  
+lock_check(){
+        if grep -q "^lock-enabled=true" "/etc/dconf/db/local.d/00-screensaver";
+        then
+		echo "screensaver is set"
+        else
+                echo "screensaver not set"
+        fi
+}
+
+lock_check
+

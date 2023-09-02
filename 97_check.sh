@@ -1,13 +1,16 @@
 #!/bin/bash
   
-squid_status(){
-        systemctl is-enabled squid
-        flag=$(systemctl is-enabled squid)
-        if [ "$flag" == "enabled" ]
+squid_check(){
+        if [ ! "$(dnf list installed | grep squid)" == "" ]
         then
-                echo "Please turn off squid"
+                if [ "$(systemctl is-enabled squid)" == "disabled" ]
+                then
+                        echo "squid is disabled"
+                else
+                        echo "squid is enabled. Please disable it"
+                fi
+        else
+                echo "squid is not installed"
         fi
 }
-
-squid_status
-
+squid_check

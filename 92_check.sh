@@ -1,14 +1,12 @@
 #!/bin/bash
 
-is_installed(){
+xinetd_check(){
 	if [ ! "$(dnf list installed | grep -o "xinetd.x86_64")" == "xinetd.x86_64" ]
 	then
-		echo "No"
-		return 1
+		echo "xinetd is not installed"
 	else
-		echo "Yes"
-		return 0
+		echo "xinetd is installed.Please remove it"
 	fi
 }
 
-is_installed
+xinetd_check

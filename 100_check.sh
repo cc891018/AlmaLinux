@@ -1,12 +1,16 @@
 #!/bin/bash
   
-ypserv_status(){
-        systemctl is-enabled ypserv
-        flag=$(systemctl is-enabled ypserv)
-        if [ "$flag" == "enabled" ]
+ypserv_check(){
+        if [ ! "$(dnf list installed | grep ypserv)" == "" ]
         then
-                echo "Please turn off ypserv"
+                if [ "$(systemctl is-enabled ypserv)" == "disabled" ]
+                then
+                        echo "ypserv is disabled"
+                else
+                        echo "ypserv is enabled. Please disable it"
+                fi
+        else
+                echo "ypserv is not installed"
         fi
 }
-
-ypserv_status
+ypserv_check
