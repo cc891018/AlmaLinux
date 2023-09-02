@@ -5,7 +5,7 @@ lock_check(){
         then
 		echo "screensaver is set"
         else
-                echo "screensaver not set"
+                echo "screensaver is not set"
         fi
 }
 

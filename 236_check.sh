@@ -5,7 +5,7 @@ AutomaticLogin_check(){
         then
 		echo "AutomaticLogin is closed"
         else
-                echo "AutomaticLogin not closed"
+                echo "AutomaticLogin is not closed"
         fi
 }
 

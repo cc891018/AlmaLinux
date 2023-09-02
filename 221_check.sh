@@ -5,7 +5,7 @@ unlock_time_check(){
         then
 		echo "Unlock time is 900"
         else
-            	echo "Unlock time not 900"
+            	echo "Unlock time is not 900"
         fi
 }
 

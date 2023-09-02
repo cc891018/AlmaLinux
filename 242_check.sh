@@ -5,7 +5,7 @@ UMASK_check(){
 	then
 		echo "UMASK is 027"
 	else
-		echo "UMASK not 027"
+		echo "UMASK is not 027"
 	fi
 }
 

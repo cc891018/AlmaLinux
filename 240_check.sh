@@ -5,7 +5,7 @@ usermod_check(){
 	then
 		echo "root GID is 0"
 	else 
-		echo "root GID not 0"
+		echo "root GID is not 0"
 	fi
 }
 

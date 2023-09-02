@@ -5,7 +5,7 @@ nologin_check(){
         then
 		echo "System account is locked"
         else
-                echo "System account not locked"
+                echo "System account is not locked"
         fi
 }
 

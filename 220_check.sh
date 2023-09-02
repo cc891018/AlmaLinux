@@ -5,7 +5,7 @@ deny_check(){
         then
 		echo "Failed login attempts is 5"
         else
-             	echo "Failed login attempts not 5"
+             	echo "Failed login attempts is not 5"
         fi
 }
 

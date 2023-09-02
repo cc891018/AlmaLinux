@@ -1,0 +1,2 @@
+Please fix the following errors to comply with GCB policy:
+[37mTWGCB-01-008-0092: [31mxinetd is installed.Please remove it [37m

@@ -5,7 +5,7 @@ wheel_group_check(){
 	then
 		echo "Wheel group is set"
 	else
-		echo "Wheel group not set"
+		echo "Wheel group is not set"
 	fi
 }
 

@@ -5,7 +5,7 @@ maxlogins_check(){
         then
 		echo "maxlogins is set"
         else
-                echo "maxlogins not set"
+                echo "maxlogins is not set"
         fi
 }
 

@@ -5,7 +5,7 @@ CREATE_HOME_yes_check(){
         then
 		echo "CREATE_HOME is yes"
         else
-                echo "CREATE_HOME not yes"
+                echo "CREATE_HOME is not yes"
         fi
 }
 

@@ -5,7 +5,7 @@ umask_check(){
 	then
 		echo "umask is 027"
 	else 
-		echo "umask not 027"
+		echo "umask is not 027"
 	fi
 }
 

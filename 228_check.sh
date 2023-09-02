@@ -6,7 +6,7 @@ user_inactive_check(){
         then
 		echo "Account inactive is 30"
         else
-		echo "Account inactive is 30"
+		echo "Account inactive is not 30"
         fi
 }
 

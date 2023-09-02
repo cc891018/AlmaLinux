@@ -11,16 +11,16 @@ gui_setting_lock_check(){
         			then
 					echo "GUI Setting is locked"
 				else
-                			echo "GUI Setting not locked"
+                			echo "GUI Setting is not locked"
 				fi
 			else
-                		echo "GUI Setting not locked"
+                		echo "GUI Setting is not locked"
 			fi
 		else
-                	echo "GUI Setting not locked"
+                	echo "GUI Setting is not locked"
 		fi
 	else
-		echo "GUI Setting not locked"
+		echo "GUI Setting is not locked"
 	fi
 }
 

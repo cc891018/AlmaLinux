@@ -5,7 +5,7 @@ PASS_MIN_DAYS_check(){
         then
 		echo "Password minimum days is 1"
         else
-                echo "Password minimum days not 1"
+                echo "Password minimum days is not 1"
         fi
 }
 

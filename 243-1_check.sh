@@ -5,7 +5,7 @@ pam_check(){
 	then
 		echo "pam_wheel.so is set"
 	else 
-		echo "pam_wheel.so not set"
+		echo "pam_wheel.so is not set"
 	fi
 }
 
