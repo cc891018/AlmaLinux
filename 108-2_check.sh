@@ -3,9 +3,9 @@
 ipv6_conf_all_forwarding_check(){
         if [ "$(sysctl net.ipv6.conf.all.forwarding)" == "net.ipv6.conf.all.forwarding = 0" ]
         then
-                echo "$(sysctl net.ipv6.conf.all.forwarding)"
+                return 0
         else
-                echo "Please set up net.ipv6.conf.all.forwarding to 0"
+                return 1
         fi
 }
 ipv6_conf_all_forwarding_check

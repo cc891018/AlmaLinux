@@ -3,9 +3,9 @@
 profile_check(){
         if grep -q "^readonly[[:blank:]]*TMOUT=900[[:blank:]]*;[[:blank:]]*export[[:blank:]]*TMOUT" "/etc/profile"
         then
-                echo "Time out is set in the /etc/profile file"
+                return 0
         else
-                echo "Time out is not set in the /etc/profile file"
+                return 1
         fi
 }
 

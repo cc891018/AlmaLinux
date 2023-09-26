@@ -3,9 +3,9 @@
 maxlogins_check(){
         if grep -q "^\*[[:blank:]]*hard[[:blank:]]*maxlogins[[:blank:]]*10" "/etc/security/limits.conf"
         then
-		echo "maxlogins is set"
+		return 0
         else
-                echo "maxlogins is not set"
+                return 1
         fi
 }
 

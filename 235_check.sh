@@ -3,9 +3,9 @@
 GNOME_idle_check(){
         if grep -q "^idle-delay=uint32[[:blank:]]* 900" "/etc/dconf/db/local.d/00-screensaver"
         then
-		echo "idle-delay is set"
+		return 0
         else
-		echo "screensaver is not set"
+		return 1
         fi
 }
 

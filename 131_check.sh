@@ -3,9 +3,9 @@
 is_promiscuous_mode(){
 	if [ "$(ip link | grep -i promisc)" == "" ]
 	then
-		echo "Your network device is not in promiscuous mode"
+		return 0
 	else
-		echo "Your network device is in promiscuous mode"
+		return 1
 	fi
 }
 

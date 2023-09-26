@@ -1,2 +1,3 @@
 Please fix the following errors to comply with GCB policy:
-[37mTWGCB-01-008-0092: [31mxinetd is installed.Please remove it [37m
+TWGCB-01-008-00110: Please set up net.ipv4.conf.default.send_redirects to 0
+TWGCB-01-008-00113-1: Please set up net.ipv4.conf.all.accept_redirects to 0

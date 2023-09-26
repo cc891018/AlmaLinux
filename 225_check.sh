@@ -3,9 +3,9 @@
 PASS_MIN_DAYS_check(){
         if grep -q "^PASS_MIN_DAYS[[:blank:]]*1" "/etc/login.defs"
         then
-		echo "Password minimum days is 1"
+		return 0
         else
-                echo "Password minimum days is not 1"
+                return 1
         fi
 }
 

@@ -1,16 +1,22 @@
 #!/bin/bash
   
 kdump_check(){
-        if [ ! "$(dnf list installed | grep kexec-tools)" == "" ]
+        if [ ! "$(dnf list installed | grep 'kexec-tools')" == "" ]
         then
-                if [ "$(systemctl is-enabled kdump)" == "enabled" ]
+                if [ $(systemctl is-enabled kdump) ]
                 then
-                        echo "kdump is enabled"
+                        if [ "$(systemctl is-enabled kdump)" == "disabled" ]
+                        then
+                                return 1
+                        else
+                                return 0
+                        fi
                 else
-                        echo "kdump is disabled. Please enable it"
+                        return 1
                 fi
         else
-                echo "kdump is not installed. Please install kexec-tools"
+                return 1
         fi
+
 }
 kdump_check

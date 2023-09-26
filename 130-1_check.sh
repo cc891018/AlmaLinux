@@ -3,9 +3,9 @@
 is_wifi_radio_all_off(){
         if [ "$(nmcli radio wifi)" == "disabled" ]
         then
-                echo "wifi is disabled"
+                return 0
         else
-                echo "Please disable wifi"
+                return 1
         fi
 }
 

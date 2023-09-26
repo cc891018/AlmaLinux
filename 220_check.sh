@@ -3,9 +3,9 @@
 deny_check(){
         if grep -q "deny = 5" "/etc/security/faillock.conf"
         then
-		echo "Failed login attempts is 5"
+		return 0
         else
-             	echo "Failed login attempts is not 5"
+             	return 1
         fi
 }
 

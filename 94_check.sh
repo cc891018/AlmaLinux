@@ -1,16 +1,21 @@
 #!/bin/bash
 
 rsyncd_check(){
-	if [ ! "$(dnf list installed | grep rsync)" == "" ]
+	if [ ! "$(dnf list installed | grep 'rsync')" == "" ]
 	then
-		if [ "$(systemctl is-enabled rsyncd)" == "disabled" ]
+		if [ $(systemctl is-enabled rsyncd > /dev/null 2>&1) ]
 		then
-			echo "rsyncd is disabled"
+			if [ $(systemctl is-enabled rsyncd) == "disabled" ]
+			then
+				return 0
+			else
+				return 1
+			fi
 		else
-			echo "rsyncd is enabled. Please disable it"
+			return 0
 		fi
 	else
-		echo "rsyncd is not installed"
+		return 0
 	fi
 }
 rsyncd_check

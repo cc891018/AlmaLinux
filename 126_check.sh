@@ -1,11 +1,11 @@
 #!/bin/bash
 
 dccp_conf_check(){
-	if [ "$(lsmod | grep dccp)" == "" ]
+	if grep -q '^install dccp /bin/true' "/etc/modprobe.d/dccp.conf" && grep -q '^blacklist dccp' "/etc/modprobe.d/dccp.conf";
 	then
-		echo "dccp is disabled now"
+		return 0
 	else
-		echo "Pleasse disable dccp module"
+		return 1
 	fi
 }
 

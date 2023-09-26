@@ -3,9 +3,9 @@
 nologin_check(){
         if grep -q "nologin" "/etc/passwd"
         then
-		echo "System account is locked"
+		return 0
         else
-                echo "System account is not locked"
+                return 1
         fi
 }
 

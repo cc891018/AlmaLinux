@@ -3,9 +3,9 @@
 CREATE_HOME_yes_check(){
         if grep -q "^CREATE_HOME[[:blank:]]*yes" "/etc/login.defs"
         then
-		echo "CREATE_HOME is yes"
+		return 0
         else
-                echo "CREATE_HOME is not yes"
+                return 1
         fi
 }
 

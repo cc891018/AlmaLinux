@@ -3,14 +3,19 @@
 snmp_check(){
         if [ ! "$(dnf list installed | grep snmp)" == "" ]
         then
-                if [ "$(systemctl is-enabled snmpd)" == "disabled" ]
+                if [ $(systemctl is-enabled snmpd > /dev/null 2>&1) ]
                 then
-                        echo "snmpd is disabled"
+			if [ "$(systemctl is-enabled snmpd)" == "disabled" ]
+			then
+                        	return 0
+			else
+				return 1
+			fi
                 else
-                        echo "snmpd is enabled. Please disable it"
+                        return 0
                 fi
         else
-                echo "snmpd is not installed"
+                return 0
         fi
 }
 snmp_check

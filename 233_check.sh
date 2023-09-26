@@ -5,9 +5,9 @@ kdb_install_check(){
 
         if [[ "$x" != "" ]]
         then
-		echo "kbd is installed"
+		return 0
         else
-                echo "kdb is not installed"
+                return 1
         fi
 }
 

@@ -1,12 +1,12 @@
 #!/bin/bash
   
-ipv6_conf.all.accept_ra_check(){
+ipv6_conf_all_accept_ra_check(){
         if [ "$(sysctl net.ipv6.conf.all.accept_ra)" == "net.ipv6.conf.all.accept_ra = 0" ]
         then
-                echo "$(sysctl net.ipv6.conf.all.accept_ra)"
+                return 0
         else
-                echo "Please set up net.ipv6.conf.all.accept_ra to 0"
+                return 1
         fi
 }
-ipv6_conf.all.accept_ra_check
+ipv6_conf_all_accept_ra_check
 

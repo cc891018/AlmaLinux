@@ -3,14 +3,19 @@
 smb_check(){
         if [ ! "$(dnf list installed | grep smb)" == "" ]
         then
-                if [ "$(systemctl is-enabled smb)" == "disabled" ]
+                if [ $(systemctl is-enabled smb > /dev/null 2>&1) ]
                 then
-                        echo "smb is disabled"
+			if [ "$(systemctl is-enabled smb)" == "disabled" ]
+			then
+                        	return 0
+			else
+				return 1
+			fi
                 else
-                        echo "smb is enabled. Please disable it"
+                        return 0
                 fi
         else
-                echo "smb is not installed"
+                return 0
         fi
 }
 smb_check

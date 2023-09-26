@@ -3,9 +3,9 @@
 UMASK_check(){
 	if grep -q "^UMASK[[:blank:]]*027" "/etc/login.defs"
 	then
-		echo "UMASK is 027"
+		return 0
 	else
-		echo "UMASK is not 027"
+		return 1
 	fi
 }
 

@@ -1,12 +1,12 @@
 #!/bin/bash
   
 tipc_conf_check(){
-        if [ "$(lsmod | grep tipc)" == "" ]
-        then
-                echo "tipc is disabled now"
-        else
-                echo "Pleasse disable tipc module"
-        fi
+        if grep -q '^install tipc /bin/true' "/etc/modprobe.d/tipc.conf" && grep -q '^blacklist tipc' "/etc/modprobe.d/tipc.conf";
+	then
+		return 0
+	else
+		return 1
+	fi
 }
 
 tipc_conf_check

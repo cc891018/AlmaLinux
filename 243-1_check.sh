@@ -3,9 +3,9 @@
 pam_check(){
 	if grep -q "^auth[[:blank:]]*required[[:blank:]]*pam_wheel.so[[:blank:]]*use_uid" "/etc/pam.d/su"
 	then
-		echo "pam_wheel.so is set"
+		return 0
 	else 
-		echo "pam_wheel.so is not set"
+		return 1
 	fi
 }
 

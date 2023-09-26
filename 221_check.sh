@@ -3,9 +3,9 @@
 unlock_time_check(){
         if grep -q "unlock_time = 900" "/etc/security/faillock.conf"
         then
-		echo "Unlock time is 900"
+		return 0
         else
-            	echo "Unlock time is not 900"
+            	return 1
         fi
 }
 

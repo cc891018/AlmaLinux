@@ -3,9 +3,9 @@
 ipv4_tcp_syncookies_check(){
         if [ "$(sysctl net.ipv4.tcp_syncookies)" == "net.ipv4.tcp_syncookies = 1" ]
         then
-                echo "$(sysctl net.ipv4.tcp_syncookies)"
+                return 0
         else
-                echo "Please set up net.ipv4.tcp_syncookies to 1"
+                return 1
         fi
 }
 ipv4_tcp_syncookies_check

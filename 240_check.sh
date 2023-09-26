@@ -3,9 +3,9 @@
 usermod_check(){
 	if grep -q "root:x:0:0" "/etc/passwd"
 	then
-		echo "root GID is 0"
+		return 0
 	else 
-		echo "root GID is not 0"
+		return 1
 	fi
 }
 

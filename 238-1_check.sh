@@ -3,9 +3,9 @@
 bashrc_check(){
         if grep -q "^readonly[[:blank:]]*TMOUT=900[[:blank:]]*;[[:blank:]]*export[[:blank:]]*TMOUT" "/etc/bashrc"
         then
-                echo "Time out is set in the /etc/bashrc file"
+                return 0
         else
-                echo "Time out is not set in the /etc/bashrc file"
+                return 1
         fi
 }
 

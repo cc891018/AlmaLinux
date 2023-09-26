@@ -3,9 +3,9 @@
 AutomaticLogin_check(){
         if grep -q "^AutomaticLoginEnable=false" "/etc/gdm/custom.conf"
         then
-		echo "AutomaticLogin is closed"
+		return 0
         else
-                echo "AutomaticLogin is not closed"
+                return 1
         fi
 }
 

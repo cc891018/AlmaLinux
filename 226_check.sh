@@ -3,9 +3,9 @@
 PASS_WARN_AGE_check(){
         if grep -q "^PASS_WARN_AGE[[:blank:]]*14" "/etc/login.defs"
         then
-		echo "Password warn days is 14"
+		return 0
         else
-		echo "Password warn days is not 14"
+		return 1
         fi
 }
 

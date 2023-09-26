@@ -3,9 +3,9 @@
 ipv4_conf_all_accept_redirects_check(){
         if [ "$(sysctl net.ipv4.conf.all.accept_redirects)" == "net.ipv4.conf.all.accept_redirects = 0" ]
         then
-                echo "$(sysctl net.ipv4.conf.all.accept_redirects)"
+                return 0
         else
-                echo "Please set up net.ipv4.conf.all.accept_redirects to 0"
+                return 1
         fi
 }
 ipv4_conf_all_accept_redirects_check

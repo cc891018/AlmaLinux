@@ -3,9 +3,9 @@
 umask_check(){
 	if grep -q "[[:blank:]]*umask[[:blank:]]*027" "/etc/profile"
 	then
-		echo "umask is 027"
+		return 0
 	else 
-		echo "umask is not 027"
+		return 1
 	fi
 }
 

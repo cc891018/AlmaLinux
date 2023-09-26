@@ -3,9 +3,9 @@
 maxclassrepeat_check(){
         if [ "$(grep -o "^maxclassrepeat = 4$" /etc/security/pwquality.conf)" == "maxclassrepeat = 4" ]
         then
-                echo "You have already set up \"maxclassrepeat\" to 4"
+                return 0
         else
-                echo "Please set up \"maxclassrepeat\" to 4"
+                return 1
         fi
 }
 

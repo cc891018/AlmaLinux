@@ -3,14 +3,19 @@
 ypserv_check(){
         if [ ! "$(dnf list installed | grep ypserv)" == "" ]
         then
-                if [ "$(systemctl is-enabled ypserv)" == "disabled" ]
+		if [ $(systemctl is-enabled ypserv > /dev/null 2>&1) ]
                 then
-                        echo "ypserv is disabled"
+			if [ "$(systemctl is-enabled ypserv)" == "disabled" ]
+			then
+				return 0
+			else
+				return 1
+			fi
                 else
-                        echo "ypserv is enabled. Please disable it"
+                        return 0
                 fi
         else
-                echo "ypserv is not installed"
+                return 0
         fi
 }
 ypserv_check

@@ -3,9 +3,9 @@
 is_wwan_radio_all_off(){
         if [ "$(nmcli radio wwan)" == "disabled" ]
         then
-                echo "wwan is disabled"
+                return 0
         else
-                echo "Please disable wwan"
+                return 1
         fi
 }
 

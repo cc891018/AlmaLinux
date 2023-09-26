@@ -3,9 +3,9 @@
 ENCRYPT_METHOD_check(){
         if grep -q "^ENCRYPT_METHOD SHA512" "/etc/login.defs"
         then
-		echo "Encrypt method is SHA512"
+		return 0
         else
-		echo "Encrypt method is not SHA512"
+		return 1
         fi
 }
 

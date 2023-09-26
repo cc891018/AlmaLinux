@@ -3,14 +3,19 @@
 avahi_check(){
         if [ ! "$(dnf list installed | grep avahi)" == "" ]
         then
-                if [ "$(systemctl is-enabled avahi-daemon)" == "disabled" ]
+                if [ $(systemctl is-enabled avahi-daemon > /dev/null 2>&1) ]
                 then
-                        echo "avahi-daemon is disabled"
+			if [ $(systemctl is-enabled avahi-daemon) == "disabled" ]
+			then
+                        	return 0
+			else
+				return 1
+			fi
                 else
-                        echo "avahi-daemon is enabled. Please disable it"
+                        return 0
                 fi
         else
-                echo "avahi-daemon is not installed"
+                return 0
         fi
 }
 avahi_check

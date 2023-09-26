@@ -1,22 +1,22 @@
 #!/bin/bash
   
 filter(){
-        grep -v "#" "/etc/sudoers" > temp
+	grep -v "#" "/etc/sudoers" > temp
 }
-NOPASSWD_check(){
-                if grep -q "NOPASSWD" temp
-                then
-			echo "NOPASSWD is set"
-                        rm -f temp
-                elif grep -q "authenticate" "/etc/sudoers"
-                then
-			echo "authenticate is set"
-                        rm -f temp
-                else
-                        echo "Neither NOPASSWD nor authenticate is set"
-                        rm -f temp
-                fi
+check_NOPASSWD(){
+		if grep -q "NOPASSWD" temp;
+			then
+			rm -f temp
+			return 1
+		elif grep -q "authenticate" "/etc/sudoers";
+		then
+			rm -f temp
+			return 1
+		else
+			rm -f temp
+			return 0
+		fi
 }
 
 filter
-NOPASSWD_check
+check_NOPASSWD

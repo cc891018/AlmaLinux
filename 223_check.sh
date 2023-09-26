@@ -3,9 +3,9 @@
 postlogin_check(){
         if grep -q "session[[:blank:]]*required[[:blank:]]*pam_lastlog.so[[:blank:]]*showfailed" "/etc/pam.d/postlogin"
         then
-		echo "Show failed logins"
+		return 0
         else
-    		echo "Hidden failed logins"
+    		return 1
         fi
 }
 
